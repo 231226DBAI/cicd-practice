@@ -30,7 +30,7 @@ jobs:
             file: ./Dockerfile
             platforms: linux/amd64
             push: true
-            tags: 이미지명:태그 # <- 수정 요망
+            tags: wooman/cicd
 
     - 
         name: SSH Remote Commands
@@ -40,8 +40,8 @@ jobs:
             username: ${{ secrets.SSH_USERNAME }}
             password: ${{ secrets.SSH_PASSWORD }}
             port: 22
-            timeout: 40s  # 30초 기본        
+            timeout: 40s    
             script: |
-                docker pull [이미지명]:[태그] # <- 수정 요망
-                docker rm -f [컨테이너명]  # <- 수정 요망
-                docker run -d -p [사용할 포트]:8000 --name [컨테이너명] [이미지명]:[태그] # <- 수정 요망
+                docker pull wooman/cicd
+                docker rm -f test_test1
+                docker run -d -p 40003:8000 --name test_test1 wooman/cicd
